@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Metropolis';
+  src: local('Metropolis-Regular'), url(Metropolis-Regular.ttf) format("truetype"), url(Metropolis-Regular.woff) format("woff"), url(Metropolis-Regular.woff2) format("woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: local('Metropolis-Thin'), url(Metropolis-Thin.ttf) format("truetype"), url(Metropolis-Thin.woff) format("woff"), url(Metropolis-Thin.woff2) format("woff2");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: local('Metropolis-Bold'), url(Metropolis-Bold.ttf) format("truetype"), url(Metropolis-Bold.woff) format("woff"), url(Metropolis-Bold.woff2) format("woff2");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: local('Metropolis-Black'), url(Metropolis-Black.ttf) format("truetype"), url(Metropolis-Black.woff) format("woff"), url(Metropolis-Black.woff2) format("woff2");
+  font-weight: 900;
+}

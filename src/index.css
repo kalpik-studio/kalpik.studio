@@ -1,13 +1,199 @@
+@import "./fonts/font.css";
+@import "https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css";
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html,
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Metropolis", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
+  color: var(--text);
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 60px;
+  margin: 20px 0;
+  color: var(--primary);
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 60px;
+  margin: 20px 0;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 45px;
+  margin: 10px 0;
+}
+
+h4 {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 45px;
+  margin: 10px 0;
+}
+
+.sectionWithMenu {
+  padding: 160px 100px 100px;
+}
+
+.pad100 {
+  padding: 100px;
+}
+
+/* HERO */
+#hero {
+  min-height: 750px;
+  max-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to left, #000000, #4d1a66);
+  background-size: cover;
+  color: #ffffff;
+  z-index: 95;
+  position: relative;
+}
+
+#hero-div {
+  width: 600px;
+  margin: 0 auto;
+}
+
+#hero-logo {
+  width: 100px;
+  margin-bottom: 60px;
+}
+/* APP MENU */
+
+#app-menu {
+  position: fixed;
+  background: linear-gradient(to left, #000000, #4d1a66);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  color: #ffffff;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+}
+
+#app-menu img {
+  margin: 10px;
+  height: 60px;
+  cursor: pointer;
+}
+
+#app-menubar {
+  font-weight: 700;
+  line-height: 20px;
+  padding: 30px;
+  display: flex;
+  cursor: pointer;
+}
+
+.menu-item {
+  margin-right: 25px;
+  opacity: 0.5;
+  text-transform: capitalize;
+  transition: opacity 0.3s ease;
+}
+
+.menu-item:hover {
+  opacity: 0.9;
+}
+
+.menu-item.active,
+.menu-item:active {
+  opacity: 1;
+}
+
+/* COMMON */
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover:not(.menu-item, .icon-link) {
+  color: #4d1a66;
+}
+
+.hidden {
+  /*display: none;*/
+  opacity: 0;
+}
+
+.visible {
+  /*display: block;*/
+  opacity: 1;
+}
+
+@media screen and (max-width: 700px) {
+  h1 {
+    font-size: 40px;
+    line-height: 50px;
+    margin: 15px 0;
+  }
+
+  h2 {
+    font-size: 35px;
+    line-height: 50px;
+    margin: 15px 0;
+  }
+
+  h3 {
+    font-size: 30px;
+    line-height: 40px;
+    margin: 10px 0;
+  }
+
+  h4 {
+    font-size: 26px;
+    line-height: 40px;
+    margin: 10px 0;
+  }
+
+  #hero {
+    max-height: inherit;
+    height: auto;
+  }
+  #hero-div {
+    width: auto;
+    margin: 0 auto;
+  }
+
+  #hero-logo {
+    width: 100px;
+    margin-bottom: 40px;
+  }
+  .pad100 {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 }
