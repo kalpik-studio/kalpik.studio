@@ -1,7 +1,7 @@
 import React from "react";
 
-import HeroSection from "./sections/hero";
-import ContactSection from "./sections/contact";
+import HeroSection from "../components/organisms/hero";
+import ContactSection from "../components/organisms/contact";
 
 const HomePage = () => {
   return (

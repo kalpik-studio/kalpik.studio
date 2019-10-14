@@ -1,8 +1,18 @@
-import React from "react";
-import Logo from "../../assets/ks-white-v.png";
+import React, { useState } from "react";
+import { useScrollPosition } from "@n8tb1t/use-scroll-position";
+import Logo from "../../assets/images/ks-white-v.png";
 import MdArrowDown from "react-ionicons/lib/MdArrowDown";
 
 const HeroSection = () => {
+  const [hideOnScroll, setHideOnScroll] = useState(true);
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      const isShow = currPos.y > prevPos.y;
+      if (isShow !== hideOnScroll) setHideOnScroll(isShow);
+    },
+    [hideOnScroll]
+  );
+
   return (
     <div id="hero" className="pad100">
       <div id="hero-div">
@@ -25,9 +35,13 @@ const HeroSection = () => {
           <br />
           <br />
         </h2>
-        <a href="#contact">
-          <MdArrowDown color="#FFFFFF" fontSize="2rem" onClick={() => {}} />
-        </a>
+        {hideOnScroll ? (
+          <a href="#contact">
+            <MdArrowDown color="#FFFFFF" fontSize="2rem" onClick={() => {}} />
+          </a>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

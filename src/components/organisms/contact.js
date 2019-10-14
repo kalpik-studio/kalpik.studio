@@ -10,7 +10,7 @@ const ContactSection = () => {
           The website is under construction. Visit soon again to see all the
           awesome stuff.
         </h2>
-        <h3 style={{ fontWeight: "bold" }}>
+        <h3>
           <a href="mailto:hello@kalpik.studio">hello@kalpik.studio</a>
         </h3>
       </div>

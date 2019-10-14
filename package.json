@@ -4,19 +4,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@n8tb1t/use-scroll-position": "^1.0.38",
+    "@webcomponents/webcomponentsjs": "^2.3.0",
     "browserify-css": "^0.12.0",
+    "core-js": "^3.2.1",
     "firebase": "^7.1.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-ionicons": "^3.0.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "vendor-copy": "^2.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "vendor-copy"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,5 +37,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "vendorCopy": [
+    {
+      "from": "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
+      "to": "public/vendor/custom-elements-es5-adapter.js"
+    },
+    {
+      "from": "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
+      "to": "public/vendor/webcomponents-bundle.js"
+    }
+  ]
 }
