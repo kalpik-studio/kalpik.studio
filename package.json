@@ -6,7 +6,7 @@
   "dependencies": {
     "@n8tb1t/use-scroll-position": "^1.0.38",
     "@webcomponents/webcomponentsjs": "^2.3.0",
-    "browserify-css": "^0.12.0",
+    "browserify-css": "^0.15.0",
     "core-js": "^3.2.1",
     "firebase": "^7.1.0",
     "react": "^16.10.2",
@@ -47,5 +47,8 @@
       "from": "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
       "to": "public/vendor/webcomponents-bundle.js"
     }
-  ]
+  ],
+  "devDependencies": {
+    "typescript": "^3.7.2"
+  }
 }

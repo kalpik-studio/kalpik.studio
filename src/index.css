@@ -1,6 +1,19 @@
 @import "./assets/fonts/metropolis.css";
 @import "https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css";
 
+:root {
+  --border: rgba(0,0,0,.2);
+  --shadow: rgba(0,0,0,.1);
+  --heading: #000;
+  --primary: #4d1a66;
+  --text: #000;
+  --textAlt: #fff;
+  --inactive: rgba(0,0,0,.3);
+  --backgroundElevated: #fff;
+  --backgroundBase: #f2f2f7;
+  --radius: 10px;
+}
+
 *,
 ::before,
 ::after {
@@ -14,7 +27,7 @@ body {
     "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--background);
+  background-color: var(--backgroundBase);
   color: var(--text);
   font-size: 20px;
   margin: 0;
@@ -28,7 +41,7 @@ code {
     monospace;
 }
 
-h1 {
+h1, .h1 {
   font-weight: 700;
   font-size: 50px;
   line-height: 60px;
@@ -36,24 +49,31 @@ h1 {
   color: var(--primary);
 }
 
-h2 {
+h2, .h2 {
   font-weight: 400;
   font-size: 40px;
   line-height: 60px;
   margin: 20px 0;
 }
 
-h3 {
+h3, .h3 {
   font-weight: 700;
   font-size: 36px;
   line-height: 45px;
   margin: 10px 0;
 }
 
-h4 {
+h4, .h4 {
   font-weight: 400;
   font-size: 30px;
   line-height: 45px;
+  margin: 10px 0;
+}
+
+h5, .h5 {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 36px;
   margin: 10px 0;
 }
 
@@ -91,7 +111,7 @@ h4 {
 
 #app-menu {
   position: fixed;
-  background: linear-gradient(to left, #000000, #4d1a66);
+  background: transparent;
   top: 0;
   left: 0;
   right: 0;
@@ -100,6 +120,10 @@ h4 {
   z-index: 100;
   display: flex;
   justify-content: space-between;
+}
+
+#app-menu.gradientBg {
+  background: linear-gradient(to left, #000000, #4d1a66);
 }
 
 #app-menu img {
@@ -153,6 +177,58 @@ a:hover:not(.menu-item, .icon-link) {
 .visible {
   /*display: block;*/
   opacity: 1;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+summary {
+  outline: none;
+}
+
+/* SERVICES */
+
+.serviceBox {
+  width: 250px;
+  height: 150px;
+  margin: 10px;
+  border-radius: var(--radius);
+  padding: 20px 20px;
+  box-shadow: 0 0 20px 0 var(--shadow);
+  flex-grow: 1;
+  position: relative;
+  background-color: var(--backgroundElevated);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.serviceBox .overlay {
+  background-color: rgba(0,0,0,.3);
+  border-radius: var(--radius);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.serviceBox h5 {
+  color: var(--text);
+  position: absolute;
+  bottom: 4px;
+  left: 20px;
+  right: 20px;
+}
+
+.serviceBox.special {
+  /* background-color: var(--primary); */
+  color: var(--primary);
 }
 
 @media screen and (max-width: 700px) {

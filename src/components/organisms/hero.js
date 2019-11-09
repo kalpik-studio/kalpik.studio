@@ -35,13 +35,11 @@ const HeroSection = () => {
           <br />
           <br />
         </h2>
-        {hideOnScroll ? (
-          <a href="#contact">
-            <MdArrowDown color="#FFFFFF" fontSize="2rem" onClick={() => {}} />
+        
+          <a href="#contact" style={{opacity: hideOnScroll? 1: 0}}>
+            <MdArrowDown color="#FFFFFF" fontSize="32px" onClick={() => {}} />
           </a>
-        ) : (
-          ""
-        )}
+        
       </div>
     </div>
   );

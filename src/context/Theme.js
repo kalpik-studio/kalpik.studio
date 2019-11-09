@@ -17,12 +17,12 @@ export function ThemeProvider(props) {
 
     if (lastTheme === "true") {
       setDark(true);
-      applyTheme(darkTheme);
+      applyTheme(darkTheme.concat(commonTheme));
     }
 
     if (!lastTheme || lastTheme === "false") {
       setDark(false);
-      applyTheme(lightTheme);
+      applyTheme(lightTheme.concat(commonTheme));
     }
     // if state changes, repaints the app
   }, [dark]);
@@ -52,22 +52,28 @@ export function ThemeProvider(props) {
 // styles
 const lightTheme = [
   "--border: rgba(0,0,0,.2)",
-  "--shadow: #000",
+  "--shadow: rgba(0,0,0,.1)",
   "--heading: #000",
   "--primary: #4d1a66",
   "--text: #000",
   "--textAlt: #fff",
   "--inactive: rgba(0,0,0,.3)",
-  "--background: #fff"
+  "--backgroundBase: #f2f2f7",
+  "--backgroundElevated: #fff"
 ];
 
 const darkTheme = [
   "--border: rgba(255,255,255,.1)",
-  "--shadow: #000",
+  "--shadow: rgba(0,0,0,.5)",
   "--heading: #FFF",
-  "--primary: #4d1a66",
+  "--primary: #76299c",
   "--text: rgb(255, 255, 255)",
   "--textAlt: #fff",
   "--inactive: rgba(255,255,255,.3)",
-  "--background: #2D2D2D"
+  "--backgroundElevated: #1c1c1e",
+  "--backgroundBase: #0d0d0d"
 ];
+
+const commonTheme = [
+  "--radius: 10px"
+]

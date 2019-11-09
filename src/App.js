@@ -11,7 +11,6 @@ function App() {
   return (
     <React.Fragment>
       <MenuBar />
-
       <Router>
         <Switch>
           <Route path="/portfolio">
