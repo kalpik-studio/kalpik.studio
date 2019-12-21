@@ -1,8 +1,8 @@
 import React from "react";
 
-import HeroSection from "../components/organisms/hero";
-import ContactSection from "../components/organisms/contact";
-import ServicesSection from "../components/organisms/services";
+import HeroSection from "../organisms/hero";
+import ContactSection from "../organisms/contact";
+import ServicesSection from "../organisms/services";
 
 const HomePage = () => {
   return (

@@ -19,3 +19,10 @@
     url(Metropolis-Bold.woff2) format("woff2");
   font-weight: 700;
 }
+
+@font-face {
+  font-family: "Metropolis";
+  src: local("Metropolis-Black"), url(Metropolis-Black.ttf) format("truetype"),
+    url(Metropolis-Black.woff2) format("woff2");
+  font-weight: 900;
+}

@@ -187,6 +187,10 @@ a:hover:not(.menu-item, .icon-link) {
   flex-wrap: wrap;
 }
 
+.flex-column {
+  flex-direction: column;
+}
+
 summary {
   outline: none;
 }
@@ -194,11 +198,12 @@ summary {
 /* SERVICES */
 
 .serviceBox {
-  width: 250px;
+  min-width: 250px;
+  width: auto;
   height: 150px;
   margin: 10px;
   border-radius: var(--radius);
-  padding: 20px 20px;
+  padding: 15px 20px;
   box-shadow: 0 0 20px 0 var(--shadow);
   flex-grow: 1;
   position: relative;
@@ -209,14 +214,30 @@ summary {
 }
 
 .serviceBox .overlay {
-  background-color: rgba(0,0,0,.3);
+  background: linear-gradient(to top, #000000, #4d1a66);
   border-radius: var(--radius);
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  opacity: 0.5;
+  transition: all 300ms;
+  user-select: none;
+  pointer-events: none;
 }
+
+.serviceBox .content{
+  position: absolute;
+  opacity: 0;
+  transition: all 300ms;
+  pointer-events: none;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+}
+
 
 .serviceBox h5 {
   color: var(--text);
@@ -224,11 +245,21 @@ summary {
   bottom: 4px;
   left: 20px;
   right: 20px;
+  opacity: 1;
+  transition: all 300ms;
+}
+
+.serviceBox:hover .overlay, .serviceBox:hover .content{
+  opacity: 1;
+}
+
+.serviceBox:hover h5 {
+  opacity: 0;
 }
 
 .serviceBox.special {
-  /* background-color: var(--primary); */
-  color: var(--primary);
+  background-color: var(--primary);
+  color: var(--textAlt);
 }
 
 @media screen and (max-width: 700px) {

@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useCallback, useContext } from "react";
-import ThemeContext from '../../context/Theme'
-import useEventListener from "../../services/eventlistener";
-import Logo from "../../assets/images/ks-white-h.png";
+import ThemeContext from '../context/Theme'
+import useEventListener from "../services/eventlistener";
+import Logo from "../assets/images/ks-white-h.png";
 
 const MenuBar = () => {
   const theme = useContext(ThemeContext);

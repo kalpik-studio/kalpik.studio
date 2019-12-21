@@ -1,15 +1,15 @@
 import React from "react";
-// import ThemeContext from "./context/Theme";
+import "./app.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import HomePage from "./pages/homepage";
-import MenuBar from "./components/organisms/menu";
-import PortfolioList from "./components/molecules/portfolio-list";
-import PortfolioForm from "./components/molecules/portfolio-form";
+import MenuBar from "./organisms/menu";
+import PortfolioList from "./molecules/portfolio-list";
+import PortfolioForm from "./molecules/portfolio-form";
 
 function App() {
   return (
-    <React.Fragment>
+    <>
       <MenuBar />
       <Router>
         <Switch>
@@ -24,7 +24,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </React.Fragment>
+    </>
   );
 }
 

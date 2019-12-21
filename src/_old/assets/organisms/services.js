@@ -1,5 +1,5 @@
 import React from "react";
-// import MdArrowDown from "react-ionicons/lib/MdArrowDown";
+import Dexer from '../assets/icons/dexer';
 
 const services = {
   indentity: [
@@ -8,7 +8,7 @@ const services = {
       price: "400",
       description:
         "Max. 3 iterations of a logo (icon or text based). Deliverables: PNG, JPG, SVG, PDF",
-      image: "/images/services/logo.png"
+      
     },
     {
       title: "Color-Theming and Typography",
@@ -58,13 +58,13 @@ const services = {
 
 const ServicesSection = () => {
   return (
-    <div id="contact" className="pad100">
+    <div id="services" className="pad100">
       <div id="hero-text">
         <h1>Services</h1>
         <hr />
         <details open>
         <summary className="h2">Branding and Identity</summary>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap " >
           {services.indentity.map(service => (
             <div
               key={service.title}
@@ -78,6 +78,10 @@ const ServicesSection = () => {
                 {service.image ? <div className="overlay" /> :null}
                 
               <h5 style={{color: service.image ? '#FFFFFF' : 'inherit'}}>{service.title}</h5>
+              
+              <Dexer fill="#888" height="2em" width="2em"/>
+              {/* <Icon icon={service.icon ? service.icon : arrowDown} size={32}/> */}
+            <span  style={{color: service.image ? '#FFFFFF' : 'inherit'}} className="content">{service.description}</span>
             </div>
           ))}
         </div>

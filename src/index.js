@@ -1,15 +1,53 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
+import { Global, css } from "@emotion/core";
 import * as serviceWorker from "./serviceWorker";
+import { StateProvider } from "./state";
+import "./assets/fonts/metropolis.css";
+import App from "./App";
+// import App2 from "./old/App";
 
-import { ThemeProvider } from "./context/Theme";
+const GlobalStyles = () => {
+  return (
+    <Global
+      styles={css`
+        html {
+          box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+          box-sizing: inherit;
+        }
+
+        *:focus {
+          outline: none !important;
+        }
+
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+          width: 100vw;
+          height: 100vh;
+          color: white;
+          background-color: black;
+          font-family: "Metropolis", sans-serif;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 1.4rem;
+        }
+      `}
+    />
+  );
+};
 
 ReactDOM.render(
-  <ThemeProvider>
+  <StateProvider>
+    <GlobalStyles />
     <App />
-  </ThemeProvider>,
+  </StateProvider>,
   document.getElementById("root")
 );
 

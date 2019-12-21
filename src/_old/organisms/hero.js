@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
-import Logo from "../../assets/images/ks-white-v.png";
-import MdArrowDown from "react-ionicons/lib/MdArrowDown";
+import Logo from "../assets/images/ks-white-v.png";
+
+import { Icon } from 'react-icons-kit';
+import { arrowDown } from 'react-icons-kit/feather';
 
 const HeroSection = () => {
   const [hideOnScroll, setHideOnScroll] = useState(true);
@@ -36,8 +38,8 @@ const HeroSection = () => {
           <br />
         </h2>
         
-          <a href="#contact" style={{opacity: hideOnScroll? 1: 0}}>
-            <MdArrowDown color="#FFFFFF" fontSize="32px" onClick={() => {}} />
+          <a href="#contact" style={{opacity: hideOnScroll? 1: 0, color:"#FFFFFF"}}>
+            <Icon icon={arrowDown} size={32}/>
           </a>
         
       </div>
