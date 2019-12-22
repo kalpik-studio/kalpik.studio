@@ -7,6 +7,7 @@ const initialState = {
   portfolios: [],
   currentPortfolioID: '',
   timeOfLastInteraction: 0,
+  enableAutoSlider: true,
 };
 
 const StateContext = createContext(initialState);

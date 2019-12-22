@@ -1,9 +1,11 @@
 import React, { useContext, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "@emotion/styled";
-// import firebase from "./firebase";
+import firebase from "./firebase";
 import { StateContext, TYPES } from "./state";
 import Slider from "./components/Slider";
 import AppBar from "./components/AppBar";
+import PortfolioForm from "./components/PortfolioForm";
 
 const LandingPage = styled.div`
   width: 100vw;
@@ -14,6 +16,7 @@ const LandingPage = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: inset 0 0 120px 0 rgba(0, 0, 0, 0.5);
 
   #slider {
     height: 80vh;
@@ -27,29 +30,37 @@ const LandingPage = styled.div`
 `;
 
 const App = () => {
-  const { dispatch } = useContext(StateContext);  
+  const { dispatch } = useContext(StateContext);
 
   useEffect(() => {
-    // const unsuscribe = firebase
-    //   .firestore()
-    //   .collection("portfolio")
-    //   .onSnapshot(snapshot => {
-    //     const payload = snapshot.docs.map(doc => ({
-    //       id: doc.id,
-    //       ...doc.data()
-    //     }));
-    //     dispatch({ type: TYPES.UPDATE_PORTFOLIOS, payload });
-    //   });
+    const unsuscribe = firebase
+      .firestore()
+      .collection("portfolio")
+      .onSnapshot(snapshot => {
+        const payload = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        dispatch({ type: TYPES.UPDATE_PORTFOLIOS, payload });
+      });
 
-    // return () => unsuscribe();
-    dispatch({ type: TYPES.UPDATE_PORTFOLIOS, payload: [{id: "businessespoo", title: "Business Espoo"}, {id: "delta", title: "Delta"}, {id: "dexer", title: "Dexer"}, {id: "pocketinc", title: "Pocket Inc"}, {id: "something", title: "something"}] });
+    return () => unsuscribe();
   }, [dispatch]);
 
   return (
-    <LandingPage>
-      <Slider />
-      <AppBar />
-    </LandingPage>
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <LandingPage>
+            <Slider />
+            <AppBar />
+          </LandingPage>
+        </Route>
+        <Route path="/form">
+          <PortfolioForm />
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 

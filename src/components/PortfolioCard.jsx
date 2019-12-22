@@ -37,14 +37,45 @@ const StyledSelectedPortfolioCard = styled(StyledPortfolioCard)`
   max-height: ${selectedCardWidth}vh;
   box-shadow: 0 0 80px 0 #000000;
   overflow: hidden;
+  filter: brightness(1);
+  transition: filter 0.2s ease-in-out;
+  animation: fade-in-fwd 0.6s ease-in-out both;
+  :hover {
+    filter: brightness(1.25);
+  }
+
+  @-webkit-keyframes fade-in-fwd {
+    0% {
+      -webkit-transform: translateZ(-80px);
+      transform: translateZ(-80px);
+      opacity: 0.5;
+    }
+    100% {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in-fwd {
+    0% {
+      -webkit-transform: translateZ(-80px);
+      transform: translateZ(-80px);
+      opacity: 0.5;
+    }
+    100% {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      opacity: 1;
+    }
+  }
 
   .overlay {
     width: 100%;
     height: 100%;
     background-image: linear-gradient(
       90deg,
-      rgba(13, 13, 13, 0.8) 0%,
-      rgba(13, 13, 13, 0.5) 30%,
+      rgba(13, 13, 13, 0.9) 0%,
+      rgba(13, 13, 13, 0.75) 30%,
       rgba(51, 51, 51, 0) 100%
     );
     padding: 40px;
@@ -55,6 +86,13 @@ const StyledSelectedPortfolioCard = styled(StyledPortfolioCard)`
       font-weight: 700;
       font-size: 2rem;
       line-height: 2.8rem;
+
+      img {
+        height: auto;
+        width: auto;
+        max-height: 80px;
+        max-width: 300px;
+      }
     }
 
     #tags {
@@ -70,7 +108,7 @@ const StyledSelectedPortfolioCard = styled(StyledPortfolioCard)`
       width: 320px;
     }
 
-    #tags2 {
+    #tech {
       font-size: 0.7rem;
       color: ${THEME.text.secondary};
       line-height: 1rem;
@@ -79,15 +117,22 @@ const StyledSelectedPortfolioCard = styled(StyledPortfolioCard)`
   }
 `;
 
-
 /**
  * TODO: onClick Details
  */
-const PortfolioCard = ({ index, id, title }) => {
+const PortfolioCard = ({
+  index,
+  id,
+  title,
+  logo,
+  background,
+  tags,
+  date,
+  description,
+  tech,
+}) => {
   const { state } = useContext(StateContext);
-
   const { isMobile } = useWindowSize();
-  console.log(isMobile);
 
   const positionInArray = index === 1 ? 0 : index === 0 ? -1 : 1;
   let positionLeft = positionInArray * cardWidth;
@@ -99,21 +144,35 @@ const PortfolioCard = ({ index, id, title }) => {
     positionLeft = "10vw";
     return (
       <StyledSelectedPortfolioCard
+        // onMouseEnter={() => dispatch({ type: TYPES.TOGGLE_AUTO_SLIDER })}
+        // onMouseLeave={() => dispatch({ type: TYPES.TOGGLE_AUTO_SLIDER })}
         left={"10vw"}
         style={{
-          backgroundImage: `url(https://images.unsplash.com/photo-1558981403-c5f9899a28bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)`
+          backgroundImage: ` url(${background})`
         }}
       >
         <div className="overlay">
-          <div id="heading">{title}</div>
-          <div id="tags">2019 • Branding, Style Guidelines</div>
+          <div id="heading">
+            {logo ? <img alt={title} src={logo} /> : title}
+          </div>
+          {date || tags ? (
+            <div id="tags">
+              {date ? date : ""} •
+              {tags && tags.length > 0
+                ? typeof tags === "string"
+                  ? tags
+                  : tags.join(", ")
+                : null}
+            </div>
+          ) : null}
           {isMobile ? null : (
             <>
-              <div id="description">
-                Business Espoo supports the vitality of businesses by offering
-                the best, continuously developing services in one place.
-              </div>
-              <div id="tags2">Sketch, InDesign</div>
+              {description ? <div id="description">{description}</div> : null}
+              {tech ? (
+                <div id="tech">
+                  {typeof tech === "string" ? tech : tech.join(", ")}
+                </div>
+              ) : null}
             </>
           )}
         </div>
@@ -124,7 +183,7 @@ const PortfolioCard = ({ index, id, title }) => {
       <StyledPortfolioCard
         left={positionLeft}
         style={{
-          backgroundImage: `url(https://images.unsplash.com/photo-1576935649119-53551e41cf62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)`
+          backgroundImage: `url(${background})`
         }}
       />
     );

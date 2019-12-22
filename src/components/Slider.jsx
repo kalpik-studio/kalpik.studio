@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import styled from "@emotion/styled";
+import uuid from 'uuid';
 import { StateContext, TYPES, THEME } from "../state";
 import PortfolioCard from "./PortfolioCard";
-import { calcTimeDiffFromNow} from "../utilities";
+import { calcTimeDiffFromNow } from "../utilities";
 import arrowIconRight from "../assets/images/arrowIconRight.svg";
 import arrowIconLeft from "../assets/images/arrowIconLeft.svg";
 
@@ -19,9 +20,11 @@ const StyledSlider = styled.div`
   #buttonPrev,
   #buttonNext {
     position: absolute;
-    top: calc(40vh - 20px);
-    height: 40px;
-    width: 40px;
+    top: 5vh;
+    bottom: 5vh;
+    width: 10vw;
+    padding-top: calc(35vh - 20px); 
+    text-align: center;    
     opacity: 0.5;
 
     :hover {
@@ -30,10 +33,10 @@ const StyledSlider = styled.div`
   }
 
   #buttonPrev {
-    left: calc(5vw - 20px);
+    left: 0;    
   }
   #buttonNext {
-    right: calc(5vw - 20px);
+    right: 0;
   }
 
   #SliderDots {
@@ -63,10 +66,10 @@ const StyledSlider = styled.div`
   }
 `;
 
-const silderTimeDelay = 50000;
+const silderTimeDelay = 10000; // Next slide in 10s
 
 const Slider = () => {
-  const { state, dispatch } = useContext(StateContext);  
+  const { state, dispatch } = useContext(StateContext);
 
   const portfoliosCount = state.portfolios.length;
 
@@ -92,10 +95,12 @@ const Slider = () => {
     const autoSlideInterval = setInterval(() => {
       if (calcTimeDiffFromNow(state.timeOfLastInteraction) > silderTimeDelay) {
         clearInterval(autoSlideInterval);
-        dispatch({
-          type: TYPES.UPDATE_SELECTED_PORTFOLIO,
-          payload: nextPortfolioId
-        });
+        if (state.enableAutoSlider) {
+          dispatch({
+            type: TYPES.UPDATE_SELECTED_PORTFOLIO,
+            payload: nextPortfolioId
+          });
+        }
       }
     }, 1000);
     return () => clearInterval(autoSlideInterval);
@@ -130,7 +135,7 @@ const Slider = () => {
     <StyledSlider>
       {filteredPortfolios &&
         filteredPortfolios.map((portolfio, index) => (
-          <PortfolioCard key={portolfio.id} index={index} {...portolfio} />
+          <PortfolioCard key={uuid()} index={index} {...portolfio} />
         ))}
       <div
         id="buttonPrev"
@@ -144,7 +149,7 @@ const Slider = () => {
         <img
           src={arrowIconLeft}
           alt="Previous"
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: '40px', height: '40px' }}
         />
       </div>
       <div
@@ -159,14 +164,14 @@ const Slider = () => {
         <img
           src={arrowIconRight}
           alt="Next"
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: '40px', height: '40px' }}
         />
       </div>
       <div id="SliderDots">
         {state.portfolios &&
           state.portfolios.map(portfolio => (
             <div
-              key={portfolio.id}
+              key={uuid()}
               className={
                 state.currentPortfolioID === portfolio.id ? "selected" : ""
               }
